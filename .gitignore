@@ -1,1 +1,4 @@
-picker.py #https://github.com/GearPenguin/Pygame-Tests/blob/master/Picker.py
+#https://github.com/GearPenguin/Pygame-Tests/blob/master/Picker.py
+picker.py 
+venv/
+__pycache__/
