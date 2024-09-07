@@ -23,15 +23,27 @@ def main():
     os = 0
     coord = (os,os)
     col, row = 0, 0
-    # for cname in colors:
-    for cname in sortedcolors:
+    colors = []
+    for k, v in pygame.color.THECOLORS.items():
+        if 'grey' not in k:
+            colors.append((k, pygame.Color(k).hsva, v))
+    # colors.sort(key=lambda x: x[1][2]) 
+    # colors.sort(key=lambda x: x[1][1]) 
+    # colors.sort(key=lambda x: x[1][0]) 
+    colors.sort(key=lambda x: x[1][1]) 
+    colors.sort(key=lambda x: x[1][2]) 
+    colors.sort(key=lambda x: x[1][0]) 
+    for c in colors:
+        print(c[0], c[1], c[2])
+    for cname in colors:
+    # for cname in sortedcolors:
         p = (coord[0]+col*w, coord[1]+row*h)
         row += 1
         rec = pygame.Rect(p[0], p[1], int(2*w), int(2*h))
-        rgb = pygame.Color(cname)
+        rgb = pygame.Color(cname[0])
         rgb = [rgb.r, rgb.g, rgb.b]
         # print((col, row), p, cname, rgb, row*h%SCREEN_HEIGHT, SCREEN_HEIGHT-h)
-        clist.append((p, cname, rec, rgb))
+        clist.append((p, cname[0], rec, rgb))
         if p[1] >= SCREEN_HEIGHT-h:
             row = 0
             col += 1
